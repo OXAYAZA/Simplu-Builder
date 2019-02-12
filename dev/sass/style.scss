@@ -1,0 +1,117 @@
+@import 'font-awesome';
+
+$frame: #109df7;
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Courier New';
+	font-size: 16px;
+	line-height: 1.8;
+	background: #222222;
+	color: white;
+}
+
+#frame {
+	position: fixed;
+	top: 50px;
+	left: 50px;
+	width: 100px;
+	height: 100px;
+	display: none;
+	border: 1px dashed $frame;
+	transition: top .15s, left .15s, width .15s, height .15s;
+	pointer-events: none;
+
+	.frame-panel {
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: monospace;
+		font-size: 12px;
+		line-height: 1;
+		vertical-align: middle;
+		white-space: nowrap;
+		pointer-events: auto;
+		background: $frame;
+
+		.text {
+			padding: 3px 7px;
+		}
+
+		> * {
+			padding: 3px;
+		}
+	}
+
+	.button {
+		background: none;
+		border: none;
+		color: inherit;
+		font-size: 14px;
+		font-weight: 400;
+		transition: .1s;
+		outline: none;
+
+		&:hover {
+			cursor: pointer;
+			background: white;
+			color: black;
+		}
+	}
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	min-height: 99vh;
+}
+
+.section {
+	padding: 50px;
+}
+
+.widgets {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	border: 3px solid;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.widget {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 50px;
+	height: 50px;
+	border: 3px solid;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	font-size: 20px;
+	font-weight: 700;
+	transition: .15s;
+	color: red;
+
+	&.active {
+		color: green;
+	}
+
+	&:hover {
+		color: orange;
+		cursor: pointer;
+	}
+}
