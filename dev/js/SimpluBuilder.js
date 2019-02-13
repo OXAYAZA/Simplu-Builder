@@ -32,6 +32,7 @@ function SimpluFrame() {
 	this.init();
 
 	window.addEventListener( 'load', (function() {
+		document.addEventListener( 'scroll', this.scroll.bind( this ) );
 		document.addEventListener( 'mousemove', this.mouse.bind( this ) );
 		this.btnCopy.addEventListener( 'click', this.copy.bind( this ) );
 		this.btnDel.addEventListener( 'click', this.delete.bind( this ) );
@@ -51,32 +52,46 @@ SimpluFrame.prototype.init = function() {
 	window.builder = this;
 };
 
-SimpluFrame.prototype.update = function( node ) {
-	if ( node !== null ) {
-		if ( this.target !== node ) {
-			this.target = node;
-			console.log( '[SimpluFrame] target:', node.plugin.params.name );
-		}
+SimpluFrame.prototype.update = function( node, event ) {
+	if ( node && this.target !== node ) {
+		this.target = node;
+		console.log( '[SimpluFrame] target:', this.target.plugin.params.name );
+	}
 
-		var rect = node.getBoundingClientRect();
+	if ( this.target ) {
+		var
+			rect = this.target.getBoundingClientRect(),
+			noTransitionId;
+
+		clearTimeout( noTransitionId );
 		this.frame.style.display = 'block';
+		this.frame.style.transition = 'top .15s, left .15s, width .15s, height .15s';
 		this.frame.style.top = rect.y +'px';
 		this.frame.style.left = rect.x +'px';
 		this.frame.style.width = rect.width +'px';
 		this.frame.style.height = rect.height +'px';
 
-		if ( node.plugin ) this.title.innerHTML = node.plugin.params.name;
-		else this.title.innerHTML = 'Bad'; // TODO Определять тэг
+		if ( event && event.type === 'scroll' ) {
+			this.frame.style.transition = 'top .0s, left .0s, width .0s, height .0s';
 
-	} else {
-		this.frame.style.display = 'none';
+			noTransitionId = setTimeout( (function() {
+				this.frame.style.transition = 'top .15s, left .15s, width .15s, height .15s';
+			}).bind( this ), 200 );
+		}
+
+		if ( this.target.plugin ) this.title.innerHTML = this.target.plugin.params.name;
+		else this.title.innerHTML = 'Bad'; // TODO Определять тэг, метод определения компонента, тэга или селектора
 	}
 };
 
 SimpluFrame.prototype.mouse = function( event ) {
 	if ( this.page.contains( event.target ) && event.target.plugin ) {
-		this.update( event.target );
+		this.update( event.target, event );
 	}
+};
+
+SimpluFrame.prototype.scroll = function( event ) {
+	this.update( null, event );
 };
 
 SimpluFrame.prototype.copy = function() {
