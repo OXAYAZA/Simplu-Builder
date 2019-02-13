@@ -3,5 +3,14 @@ extends _skeleton
 block page
 	section.section
 		.widgets
-			- for ( var i = 0; i < 5; i++ )
-				.widget( data-component='Test' )= i
+			- for ( var i = 0; i < 3; i++ )
+				.widget( data-plugin='Test' )= i
+
+	section.section
+		.widgets
+			- for ( var i = 0; i < 2; i++ )
+				.progress( data-plugin='Progress' )
+					svg.progress-circle( x='0', y='0', width='100', height='100', viewbox='0 0 100 100' )
+						circle.bg( cx=50, cy=50, r=45 )
+						circle.clipped( cx=50, cy=50, r=50, fill= color )
+					.progress-counter( contenteditable='true' ) 80

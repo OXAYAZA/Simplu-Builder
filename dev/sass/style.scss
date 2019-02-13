@@ -16,7 +16,7 @@ body {
 	color: white;
 }
 
-#frame {
+.simplu-frame {
 	position: fixed;
 	top: 50px;
 	left: 50px;
@@ -26,48 +26,50 @@ body {
 	border: 1px dashed $frame;
 	transition: top .15s, left .15s, width .15s, height .15s;
 	pointer-events: none;
+}
 
-	.frame-panel {
-		position: absolute;
-		bottom: 100%;
-		left: 50%;
-		transform: translateX(-50%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-family: monospace;
-		font-size: 12px;
-		line-height: 1;
-		vertical-align: middle;
-		white-space: nowrap;
-		pointer-events: auto;
-		background: $frame;
+.simplu-panel {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: monospace;
+	font-size: 12px;
+	line-height: 1;
+	vertical-align: middle;
+	white-space: nowrap;
+	pointer-events: auto;
+	background: $frame;
+	color: white;
 
-		.text {
-			padding: 3px 7px;
-		}
-
-		> * {
-			padding: 3px;
-		}
-	}
-
-	.button {
-		background: none;
-		border: none;
-		color: inherit;
-		font-size: 14px;
-		font-weight: 400;
-		transition: .1s;
-		outline: none;
-
-		&:hover {
-			cursor: pointer;
-			background: white;
-			color: black;
-		}
+	> * {
+		padding: 3px;
 	}
 }
+
+.simplu-title {
+	padding: 3px 7px;
+}
+
+.simplu-button {
+	background: none;
+	border: none;
+	color: inherit;
+	font-size: 14px;
+	font-weight: 400;
+	transition: .1s;
+	outline: none;
+
+	&:hover {
+		cursor: pointer;
+		background: white;
+		color: black;
+	}
+}
+
 
 .page {
 	display: flex;
@@ -114,4 +116,32 @@ body {
 		color: orange;
 		cursor: pointer;
 	}
+}
+
+.progress {
+	position: relative;
+	padding: 10px;
+}
+
+.progress-circle {
+	display: block;
+	border-radius: 50%;
+	fill: orange;
+
+	.bg {
+		fill: rgba(black,.3);
+	}
+}
+
+.progress-counter {
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 40px;
+	font-weight: 700;
 }
