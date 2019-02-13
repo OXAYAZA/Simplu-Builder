@@ -9,6 +9,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	// Test plugin
 	builder.registerPlugin({
 		name: 'Test',
+		allow: {
+			copy: true,
+			delete: true,
+			move: true
+		},
 		init: function() {
 			console.log( '[TestPlugin] init' );
 		},
@@ -20,6 +25,10 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	// Progress
 	builder.registerPlugin({
 		name: 'Progress',
+		allow: {
+			copy: true,
+			delete: true
+		},
 		init: function() {
 			console.log( '[Progress] init' );
 

@@ -26,6 +26,7 @@ body {
 	border: 1px dashed $frame;
 	transition: top .15s, left .15s, width .15s, height .15s;
 	pointer-events: none;
+	user-select: none;
 }
 
 .simplu-panel {
@@ -107,6 +108,10 @@ body {
 	font-weight: 700;
 	transition: .15s;
 	color: red;
+
+	&.blue {
+		color: #5270e6;
+	}
 
 	&.active {
 		color: green;

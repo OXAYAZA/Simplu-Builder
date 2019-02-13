@@ -3,8 +3,10 @@ extends _skeleton
 block page
 	section.section
 		.widgets
-			- for ( var i = 0; i < 3; i++ )
+			.widget.blue( data-plugin='Test' ) Start
+			- for ( var i = 0; i < 10; i++ )
 				.widget( data-plugin='Test' )= i
+			.widget.blue( data-plugin='Test' ) End
 
 	section.section
 		.widgets
