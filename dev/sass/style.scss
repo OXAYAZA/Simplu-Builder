@@ -1,6 +1,7 @@
 @import 'font-awesome';
 
-$frame: #109df7;
+$simplu-primary: #109df7;
+$simplu-secondary: white;
 
 * {
 	box-sizing: border-box;
@@ -14,17 +15,22 @@ body {
 	line-height: 1.8;
 	background: #222222;
 	color: white;
+	user-select: none; // TODO Нужно только в режиме редактирования
+}
+
+.simplu-debug {
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+	padding: 10px;
+	background: black;
+	color: white;
 }
 
 .simplu-frame {
 	position: fixed;
-	top: 50px;
-	left: 50px;
-	width: 100px;
-	height: 100px;
 	display: none;
-	border: 1px dashed $frame;
-	transition: top .15s, left .15s, width .15s, height .15s;
+	border: 1px dashed var(--simplu-primary, #{$simplu-primary});
 	pointer-events: none;
 	user-select: none;
 }
@@ -43,8 +49,8 @@ body {
 	vertical-align: middle;
 	white-space: nowrap;
 	pointer-events: auto;
-	background: $frame;
-	color: white;
+	background: var(--simplu-primary, #{$simplu-primary});
+	color: var(--simplu-secondary, #{$simplu-secondary});
 
 	> * {
 		padding: 3px;

@@ -27,7 +27,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		name: 'Progress',
 		allow: {
 			copy: true,
-			delete: true
+			delete: true,
+			move: true
 		},
 		init: function() {
 			console.log( '[Progress] init' );
