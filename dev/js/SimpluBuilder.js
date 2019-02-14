@@ -88,7 +88,7 @@ SimpluFrame.prototype.genSelector = function( element ) {
 SimpluFrame.prototype.createFrame = function() {
 	this.frame = document.createElement( 'div' );
 	this.frame.className = 'simplu-frame';
-	this.frame.innerHTML = '<div class="simplu-panel"><div class="simplu-title"></div><button class="simplu-button simplu-move fa-arrows" title="move"></button><button class="simplu-button simplu-copy fa-copy" title="copy"></button><button class="simplu-button simplu-delete fa-trash-o" title="delete"></button></div>';
+	this.frame.innerHTML = '<div class="simplu-panel"><div class="simplu-title"></div><button class="simplu-button simplu-move fa-arrows" title="move"></button><button class="simplu-button simplu-up fa-level-up" title="select container"></button><button class="simplu-button simplu-copy fa-copy" title="copy"></button><button class="simplu-button simplu-delete fa-trash-o" title="delete"></button></div>';
 	this.panel = this.frame.querySelector( '.simplu-panel' );
 	this.title = this.frame.querySelector( '.simplu-title' );
 	this.btnMove = this.frame.querySelector( '.simplu-move' );
