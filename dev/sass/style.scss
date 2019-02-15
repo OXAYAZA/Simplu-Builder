@@ -1,7 +1,15 @@
 @import 'font-awesome';
 
 $simplu-primary: #109df7;
-$simplu-secondary: white;
+
+$simplu-background: $simplu-primary;
+$simplu-color: white;
+$simplu-border: $simplu-primary;
+
+// Code colors
+$plugin: $simplu-primary;
+$tag: #f92672;
+$class: #a6e22e;
 
 * {
 	box-sizing: border-box;
@@ -18,19 +26,116 @@ body {
 	user-select: none; // TODO Нужно только в режиме редактирования
 }
 
+.tag {
+	color: var(--simplu-tag, #{$tag});
+}
+
+.class {
+	color: var(--simplu-class, #{$class});
+}
+
+.plugin {
+	color: var(--simplu-plugin, #{$plugin});
+}
+
+.simplu-menu {
+	position: fixed;
+	top: 15px;
+	left: 15px;
+	padding: 10px;
+	background: #000000;
+	color: #ffffff;
+}
+
+.simplu-option {
+	display: flex;
+
+	&:hover {
+		color: var( --simplu-primary, #{$simplu-primary} )
+	}
+
+	& > * {
+		vertical-align: middle;
+	}
+
+	* + & {
+		margin-top: 10px;
+	}
+}
+
+.simplu-label,
+.simplu-checkbox {
+	transition: color .15s;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+.simplu-label {
+	padding-left: 10px;
+	line-height: 16px;
+}
+
+.simplu-checkbox {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	position: relative;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 2px solid;
+	outline: none;
+	background: transparent;
+	color: inherit;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate( -50%, -50% );
+		display: block;
+		width: 0;
+		height: 0;
+		transition: width .2s cubic-bezier(0,0,0,1), height .2s cubic-bezier(1,0,1,0);
+		background-color: currentColor;
+	}
+
+	&:checked {
+		&::before {
+			width: 8px;
+			height: 8px;
+			transition: width .2s cubic-bezier(0,0,0,2), height .2s cubic-bezier(1,0,.4,1.75);
+		}
+	}
+
+	&:disabled {
+		color: #555;
+		cursor: not-allowed;
+
+		& + .simplu-label {
+			color: #555;
+			cursor: not-allowed;
+		}
+	}
+}
+
 .simplu-debug {
 	position: fixed;
 	bottom: 15px;
 	left: 15px;
 	padding: 10px;
 	background: black;
-	color: white;
+	color: var(--simplu-color, #{$simplu-color});
 }
 
 .simplu-frame {
 	position: fixed;
 	display: none;
-	border: 1px dashed var(--simplu-primary, #{$simplu-primary});
+	border: 1px dashed var(--simplu-border, #{$simplu-border});
 	pointer-events: none;
 	user-select: none;
 }
@@ -49,8 +154,8 @@ body {
 	vertical-align: middle;
 	white-space: nowrap;
 	pointer-events: auto;
-	background: var(--simplu-primary, #{$simplu-primary});
-	color: var(--simplu-secondary, #{$simplu-secondary});
+	background: var(--simplu-background, #{$simplu-background});
+	color: var(--simplu-color, #{$simplu-color});
 
 	> * {
 		padding: 3px;
